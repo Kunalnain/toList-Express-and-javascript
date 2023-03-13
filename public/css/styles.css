@@ -1,0 +1,82 @@
+
+html, body {
+    height: 100%;
+    width: 100%;
+  }
+  
+  body {
+    background: linear-gradient(to bottom left, rgb(102, 160, 221) 10%, rgb(219, 135, 255) 70%,rgb(140, 0, 255) 75%);
+  }
+  
+h1 {
+  text-align: center;
+  color: #333;
+  margin-top: 20px;
+}
+.container {
+  margin-top: 50px;
+}
+.card {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.card-header {
+  background-color:rgb(140, 0, 255);
+  color: #fff;
+  font-weight: bold;
+  font-size: 20px;
+  
+}
+.card-body {
+  padding: 0;
+}
+.form-control:focus {
+  border-color: #040948;
+  box-shadow: none;
+}
+.btn-primary {
+  background-color:rgb(140, 0, 255);
+  border-color: #d80beb;
+  transition: background-color 0.3s;
+}
+.btn-primary:hover {
+ 
+  background-color: #360f57;
+  border-color: #812bd8;
+}
+.btn-danger {
+  background-color: #F44336;
+  border-color: #F44336;
+  transition: background-color 0.3s;
+}
+.btn-danger:hover {
+  background-color: #D32F2F;
+  border-color: #D32F2F;
+}
+
+.todays-date{
+    font-weight: bolder;
+    font-size: 3rem;
+    font-family: fantasy;
+}
+.submitButton{
+    border-radius: 50%;
+    width: auto;
+    margin-left: auto;
+    border-radius: 10px;
+    
+}
+.inputBox{
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    
+}
+
+.listItem{
+    background-color:rgb(102, 160, 221);
+    
+    margin: 5px 10px 5px 10px;
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Todo List</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+ <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="container ">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="todays-date"> <%= kindOfDay %>  </h2>
+          </div>
+          <div class="card-body">
+            <form id="todo-form">
+              <div class="form-group">
+                <input type="text" id="todo-input" class="form-control inputBox" placeholder="ADD TASK" autocomplete="off">
+                <button type="submit" class="btn btn-primary btn-block submitButton">ADD</button>
+
+            </div>
+            </form>
+            <ul id="todo-list" class="list-group list-group-flush">
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    $(function() {
+      // define variables
+      var todoForm = $('#todo-form');
+      var todoInput = $('#todo-input');
+      var todoList = $('#todo-list');
+
+      // define function to add a todo item
+      function addTodo() {
+        var todoText = todoInput.val().trim();
+        if (todoText !== '') {
+          var todoItem = $('<li>').addClass('list-group-item listItem').text(todoText);
+          var deleteBtn = $('<button>').addClass('btn btn-danger float-right').html('&times;');
+          todoItem.append(deleteBtn);
+                // add todo item to list
+      todoList.append(todoItem);
+
+      // clear input field
+      todoInput.val('');
+
+      // show success message
+      Swal.fire({
+        icon: 'success',
+        title: 'Success!',
+        text: 'Todo item added'
+      });
+    }
+  }
+
+  // define function to delete a todo item
+  function deleteTodo() {
+    var todoItem = $(this).parent();
+    Swal.fire({
+      icon: 'warning',
+      title: 'Are you sure?',
+      text: 'You will not be able to recover this todo item!',
+      showCancelButton: true,
+      confirmButtonColor: '#F44336',
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, cancel'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        todoItem.remove();
+        Swal.fire({
+          icon: 'success',
+          title: 'Success!',
+          text: 'Todo item deleted'
+        });
+      }
+    });
+  }
+
+  // add event listener to todo form
+  todoForm.on('submit', function(event) {
+    event.preventDefault();
+    addTodo();
+  });
+
+  // add event listener to delete button
+  todoList.on('click', '.btn-danger', deleteTodo);
+});
+  </script>
+</body>
+</html>
